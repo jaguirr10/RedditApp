@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar color="primary" >
+      <ion-title style="text-align:center">
+        iReddit
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding style="background-color:#000;">
+
+  <ion-list  >
+      <ion-item style="background-color:#000; color:#fff">
+      <ion-label fixed style="color:#fff;">Category</ion-label>
+      <ion-select style="color:#fff;" (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+          <ion-option value="sports">Sports</ion-option>
+          <ion-option value="math">Math</ion-option>
+          <ion-option value="college">College</ion-option>
+          <ion-option value="politics">Politics</ion-option>
+          <ion-option value="CryptoCurrency">Crypto Currency</ion-option>
+          <ion-option value="machinelearning">Machine Learning</ion-option>
+          <ion-option value="gaming">Gaming</ion-option>
+          <ion-option value="food">Engineering</ion-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+
+      <ion-list>
+          <ion-item style="background-color:#000;color:white" *ngFor="let item of items">
+            <ion-thumbnail *ngIf="item.data.thumbnail" item-left>
+              <img src="{{item.data.thumbnail}}">
+            </ion-thumbnail>
+            <h2 >{{item.data.title}}</h2>
+            <p>
+              <ion-icon name="thumbs-up" style="color:#fff">{{item.data.score}}</ion-icon>&nbsp;&nbsp;
+              <ion-icon name="chatboxes"style="color:#fff" >{{item.data.num_comments}}</ion-icon>
+            </p>
+            <button ion-button clear item-right (click)="viewItem(item.data)"style="color:#fff" >View</button>
+          </ion-item>
+        </ion-list>
+      
+
+  </ion-content>
+  
